@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Contrôle</title>
+      <link rel='stylesheet' href='css/bootstrap.min.css'>
+      <link rel="stylesheet" href="css/style.css">
+   
+
+        <script src="js/jquery.min.js"></script>
+     <script>
+    
+    
+   		$(document).ready(function(){
+
+          
+          k=0;
+            var tabs = ['jQuery is a  JavaScript Library','the $ sign','All div elements','Client scripting','yes','hide()' ];
+
+
+   			document.getElementById("progression").innerHTML="1"+"/6";
+        document.getElementById("score").innerHTML="0/6";
+   			i=2;
+        $(".qst1").removeClass('qst');
+   			var tb = [];
+        var trep =[];
+          var sc=0;
+    $("button").click(function(){
+
+        $(".qst"+(i)+"").removeClass('qst');
+
+      
+         var radioValue = parseFloat($("input[name='quiz"+i+"']:checked").val());
+
+         if(radioValue == 0){
+            trep.push("votre reponse est faux la vrai reponse est "+tabs[k]);
+            k++;
+         }else{
+            trep.push("votre reponse est vrai");
+            k++;
+         }
+         sc=sc+radioValue;
+
+
+         tb.push(radioValue);
+         $(".qst"+(i-1)+"").addClass('qst');
+        i++;
+
+          
+
+        document.getElementById("progression").innerHTML=i-1 +"/6";
+        document.getElementById("score").innerHTML=sc +"/6";
+
+        if(i==8){
+        	$(".qsts").addClass('qst');
+
+
+        	 document.write(" <div style='text-align:center;background-color:gray;margin-right:250px;margin-left:250px'>voter resulte est "+sc+"/6 </div><div style='gray;margin-right:250px;margin-left:250px'>");
+        	$.each( trep, function( key, value ) {
+  			   document.write( " "+(key +1)  + ":   " + value+"<br>");
+			   });
+
+          document.write("<button id='re'  style='padding:10px;background-color:gray;'>rtry agin</button></div>");
+          $("#re").click(function(){
+            location.reload();
+          });
+        }
+    });
+});
+      	
+
+
+      		
+
+      		
+      	       
+ 
+    </script>    
+  </head>
+  
+  <body>
+    <div class="container">
+      <!-- titre -->
+      <div class="row">
+        <div class="col-md-12"><h3 >Contrôle de connaissances en jquery</h3></div>
+      </div>
+      <!-- progression -->
+      <div class="row">
+        <div class="col-md-8"></div>
+        <div class="col-md-4">
+          <div class="progression"> votre progression :<span id="progression"></span></div>
+        </div>
+      </div>
+      <!-- qcm -->
+        <div class="row">
+          <div class="col-md-1"></div>
+          <div class="col-md-8">
+            
+              <div class="qsts">
+          
+        <div class="qst qst1" id="">
+          <p class="btn btn-outline-secondary " style="margin-bottom:30px;">1. Which of the following is correct?</p>
+          <form name="aa" >
+            <div class='radio'>
+              <label>
+                <input type='radio' name='quiz2' id='0' value='0' /> 
+                jQuery is a JSON Lbrary
+              </label>
+            </div>
+            <div class='radio'>
+              <label>
+                <input type='radio' name='quiz2' id='1' value='1' /> 
+                  jQuery is a  JavaScript Library
+              </label>
+            </div>
+            
+              <input type='radio' style="display: none"   checked name='quiz2'  value='0' /> 
+              
+          
+            <br>  
+          </form>
+        </div>
+
+        <div class="qst qst2" id="">
+
+          <form >
+              <p class="btn btn-outline-secondary " style="margin-bottom:30px;">2. Which sign does JQuery use as a shortcur for JQuery?</p>
+
+            <div class='radio'>
+              <label>
+                <input type='radio' name='quiz3'  id="0" value='0 ' />  haut du formulaire
+              </label>
+            </div>
+            <div class='radio'>
+              <label>
+                <input type='radio' name='quiz3' id="1" value='1' /> the $ sign
+              </label>
+            </div>
+            <div class='radio'>
+              <label>
+                <input type='radio' name='quiz3' id="0" value='0' /> the ? sign
+              </label>
+            </div>
+            <div class='radio'>
+              <label>
+                <input type='radio' name='quiz3' id="0" value='0' /> the % sign
+              </label>
+            </div>
+            <br>
+            <input type='radio' style="display: none"   checked name='quiz3'  value='0' /> 
+          </form>
+        </div>
+        <div class="qst qst3" id="">
+          <p class="btn btn-outline-secondary " style="margin-bottom:30px;">3. Look at the following selector :$("div"). what does it select?
+
+          <form >
+            <div class='radio'>
+              <label>
+                <input type='radio' name='quiz4'  value='0' />  the first div element
+              </label>
+            </div>
+            <div class='radio'>
+              <label>
+                <input type='radio' name='quiz4'  value='1' /> All div elements
+              </label>
+            </div>
+            <br>
+            <input type='radio' style="display: none"   checked name='quiz4'  value='0' /> 
+          </form>
+        </div>
+        <div class="qst qst4" id="">
+          <p class="btn btn-outline-secondary " style="margin-bottom:30px;">4. Is jGuery a library for client scripting or server scripting ?
+
+          <form >
+            <div class='radio'>
+              <label>
+                <input type='radio' name='quiz5'  value='0 ' />  Server scripting
+              </label>
+            </div>
+            <div class='radio'>
+              <label>
+                <input type='radio' name='quiz5'  value='1' /> Client scripting
+              </label>
+            </div>
+            <br>
+            <input type='radio' style="display: none"   checked name='quiz5'  value='0' /> 
+          </form>
+        </div>
+         <div class="qst qst5" id="">
+          <p class="btn btn-outline-secondary " style="margin-bottom:30px;">5. Is  it possible t use jQuery together with ajax?
+
+          <form >
+            <div class='radio'>
+              <label>
+                <input type='radio' name='quiz6'  value='0 ' />  yes
+              </label>
+            </div>
+            <div class='radio'>
+              <label>
+                <input type='radio' name='quiz6'  value='1' /> no
+              </label>
+            </div>
+            <br>
+            <input type='radio' style="display: none"   checked name='quiz6'  value='0' /> 
+          </form>
+        </div>
+         <div class="qst qst6" id="">
+          <p class="btn btn-outline-secondary " style="margin-bottom:30px;">6. Which jQuery method is used to hide selected elements
+          <form >
+            <div class='radio'>
+              <label>
+                <input type='radio' name='quiz7'  value='0' />  hidden()
+              </label>
+            </div>
+            <div class='radio'>
+              <label>
+                <input type='radio' name='quiz7'  value='1' /> hide()
+              </label>
+            </div>
+             <div class='radio'>
+              <label>
+                <input type='radio' name='quiz7'  value='0' /> display(non)
+              </label>
+            </div>
+             <div class='radio'>
+              <label>
+                <input type='radio' name='quiz7'  value='0' /> visble(false)
+              </label>
+            </div>
+            <br>
+            <input type='radio' style="display: none"   checked name='quiz7'  value='0' /> 
+          </form>
+        </div>
+        
+
+        
+      </div>
+        <button  id="next-button"  class="btn btn-secondary">next</button>
+      </div>
+
+          </div>
+        </div>
+      </div>
+
+     
+
+      <!-- score -->
+      <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+         <div class="score"> votre score est :<span id="score"></span></div>
+        </div>
+      </div>
+      </div>
+
+      <div class="resultat">
+        <div class="row">
+          <script type="text/javascript">
+            
+          </script>
+        </div>
+      </div>
+
+
+    </div>
+
+
+
+
+
+        
+       
+        <br>  
+    	
+
+
+
+ 
+        
+   <script src="js/jquery.min.js"></script>
+  </body>
+</html>
